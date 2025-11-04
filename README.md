@@ -1,141 +1,327 @@
-# 🚀 Welcome to Z.ai Code Scaffold
+# Zero-Code Builder with Self-Hosted Multi-LLM Brain
 
-A modern, production-ready web application scaffold powered by cutting-edge technologies, designed to accelerate your development with [Z.ai](https://chat.z.ai)'s AI-powered coding assistance.
+A comprehensive zero-code builder platform where users can visually design, deploy, and host AI-powered applications. All AI functionality is powered by open-source LLMs hosted on our own server infrastructure.
 
-## ✨ Technology Stack
+## 🚀 Features
 
-This scaffold provides a robust foundation built with:
+### Core Builder
+- **Visual Drag-Drop Canvas**: React Flow-based interface for building applications
+- **Block System**: UI, Logic, AI, and API blocks that can be connected
+- **Real-time AI Assistant**: Natural language building assistance
+- **Project Management**: Save, load, and version control projects
+- **Export/Import**: JSON-based project format
 
-### 🎯 Core Framework
-- **⚡ Next.js 15** - The React framework for production with App Router
-- **📘 TypeScript 5** - Type-safe JavaScript for better developer experience
-- **🎨 Tailwind CSS 4** - Utility-first CSS framework for rapid UI development
+### AI Integration
+- **Multi-LLM Support**: Uses z-ai-web-dev-sdk for AI functionality
+- **Smart Suggestions**: AI-powered block recommendations
+- **Context-Aware**: Understands existing project structure
+- **Usage Tracking**: Monitor AI request limits and costs
 
-### 🧩 UI Components & Styling
-- **🧩 shadcn/ui** - High-quality, accessible components built on Radix UI
-- **🎯 Lucide React** - Beautiful & consistent icon library
-- **🌈 Framer Motion** - Production-ready motion library for React
-- **🎨 Next Themes** - Perfect dark mode in 2 lines of code
+### Hosting & Deployment
+- **Subscription Tiers**: Free, Pro ($15/mo), Business ($49/mo), Enterprise
+- **Container-based Deployment**: Docker containers for each project
+- **Reverse Proxy**: Nginx with SSL and multi-domain routing
+- **Usage Monitoring**: Track CPU, memory, and API usage
 
-### 📋 Forms & Validation
-- **🎣 React Hook Form** - Performant forms with easy validation
-- **✅ Zod** - TypeScript-first schema validation
+### Database Schema
+- **Users & Authentication**: User management with subscription tiers
+- **Projects**: Visual builder projects with workflow configurations
+- **Workflows**: Node-based workflow definitions
+- **Deployments**: Container deployment tracking
+- **Billing**: Subscription and usage billing
+- **Conversations**: Chat history for AI interactions
 
-### 🔄 State Management & Data Fetching
-- **🐻 Zustand** - Simple, scalable state management
-- **🔄 TanStack Query** - Powerful data synchronization for React
-- **🌐 Axios** - Promise-based HTTP client
-
-### 🗄️ Database & Backend
-- **🗄️ Prisma** - Next-generation Node.js and TypeScript ORM
-- **🔐 NextAuth.js** - Complete open-source authentication solution
-
-### 🎨 Advanced UI Features
-- **📊 TanStack Table** - Headless UI for building tables and datagrids
-- **🖱️ DND Kit** - Modern drag and drop toolkit for React
-- **📊 Recharts** - Redefined chart library built with React and D3
-- **🖼️ Sharp** - High performance image processing
-
-### 🌍 Internationalization & Utilities
-- **🌍 Next Intl** - Internationalization library for Next.js
-- **📅 Date-fns** - Modern JavaScript date utility library
-- **🪝 ReactUse** - Collection of essential React hooks for modern development
-
-## 🎯 Why This Scaffold?
-
-- **🏎️ Fast Development** - Pre-configured tooling and best practices
-- **🎨 Beautiful UI** - Complete shadcn/ui component library with advanced interactions
-- **🔒 Type Safety** - Full TypeScript configuration with Zod validation
-- **📱 Responsive** - Mobile-first design principles with smooth animations
-- **🗄️ Database Ready** - Prisma ORM configured for rapid backend development
-- **🔐 Auth Included** - NextAuth.js for secure authentication flows
-- **📊 Data Visualization** - Charts, tables, and drag-and-drop functionality
-- **🌍 i18n Ready** - Multi-language support with Next Intl
-- **🚀 Production Ready** - Optimized build and deployment settings
-- **🤖 AI-Friendly** - Structured codebase perfect for AI assistance
-
-## 🚀 Quick Start
-
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
-npm start
-```
-
-Open [http://localhost:3000](http://localhost:3000) to see your application running.
-
-## 🤖 Powered by Z.ai
-
-This scaffold is optimized for use with [Z.ai](https://chat.z.ai) - your AI assistant for:
-
-- **💻 Code Generation** - Generate components, pages, and features instantly
-- **🎨 UI Development** - Create beautiful interfaces with AI assistance  
-- **🔧 Bug Fixing** - Identify and resolve issues with intelligent suggestions
-- **📝 Documentation** - Auto-generate comprehensive documentation
-- **🚀 Optimization** - Performance improvements and best practices
-
-Ready to build something amazing? Start chatting with Z.ai at [chat.z.ai](https://chat.z.ai) and experience the future of AI-powered development!
-
-## 📁 Project Structure
+## 🏗️ Architecture
 
 ```
-src/
-├── app/                 # Next.js App Router pages
-├── components/          # Reusable React components
-│   └── ui/             # shadcn/ui components
-├── hooks/              # Custom React hooks
-└── lib/                # Utility functions and configurations
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Frontend      │    │   Backend       │    │   LLM Layer     │
+│   (Next.js)     │◄──►│   (Node.js)     │◄──►│   (z-ai-sdk)    │
+│                 │    │                 │    │                 │
+│ • React Flow    │    │ • API Routes    │    │ • Chat API      │
+│ • Drag & Drop   │    │ • Database      │    │ • Generation    │
+│ • AI Assistant  │    │ • Auth          │    │ • Embeddings    │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+         │                       │                       │
+         └───────────────────────┼───────────────────────┘
+                                 │
+                    ┌─────────────────┐
+                    │   Deployment    │
+                    │   Layer         │
+                    │                 │
+                    │ • Docker        │
+                    │ • Nginx         │
+                    │ • SSL           │
+                    └─────────────────┘
 ```
 
-## 🎨 Available Features & Components
+## 🛠️ Technology Stack
 
-This scaffold includes a comprehensive set of modern web development tools:
+### Frontend
+- **Next.js 15** with App Router
+- **TypeScript 5** for type safety
+- **React Flow** for visual builder
+- **Tailwind CSS** with shadcn/ui components
+- **Zustand** for state management
+- **Framer Motion** for animations
 
-### 🧩 UI Components (shadcn/ui)
-- **Layout**: Card, Separator, Aspect Ratio, Resizable Panels
-- **Forms**: Input, Textarea, Select, Checkbox, Radio Group, Switch
-- **Feedback**: Alert, Toast (Sonner), Progress, Skeleton
-- **Navigation**: Breadcrumb, Menubar, Navigation Menu, Pagination
-- **Overlay**: Dialog, Sheet, Popover, Tooltip, Hover Card
-- **Data Display**: Badge, Avatar, Calendar
+### Backend
+- **Node.js** with Next.js API routes
+- **Prisma ORM** with SQLite database
+- **z-ai-web-dev-sdk** for AI functionality
+- **NextAuth.js** for authentication
+- **Socket.io** for real-time features
 
-### 📊 Advanced Data Features
-- **Tables**: Powerful data tables with sorting, filtering, pagination (TanStack Table)
-- **Charts**: Beautiful visualizations with Recharts
-- **Forms**: Type-safe forms with React Hook Form + Zod validation
+### Infrastructure
+- **Docker** for containerization
+- **Nginx** for reverse proxy
+- **SQLite** for development (PostgreSQL for production)
+- **Redis** for caching (optional)
 
-### 🎨 Interactive Features
-- **Animations**: Smooth micro-interactions with Framer Motion
-- **Drag & Drop**: Modern drag-and-drop functionality with DND Kit
-- **Theme Switching**: Built-in dark/light mode support
+## 📦 Installation
 
-### 🔐 Backend Integration
-- **Authentication**: Ready-to-use auth flows with NextAuth.js
-- **Database**: Type-safe database operations with Prisma
-- **API Client**: HTTP requests with Axios + TanStack Query
-- **State Management**: Simple and scalable with Zustand
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+- Docker (optional, for deployment)
 
-### 🌍 Production Features
-- **Internationalization**: Multi-language support with Next Intl
-- **Image Optimization**: Automatic image processing with Sharp
-- **Type Safety**: End-to-end TypeScript with Zod validation
-- **Essential Hooks**: 100+ useful React hooks with ReactUse for common patterns
+### Local Development
 
-## 🤝 Get Started with Z.ai
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd zero-code-builder
+   ```
 
-1. **Clone this scaffold** to jumpstart your project
-2. **Visit [chat.z.ai](https://chat.z.ai)** to access your AI coding assistant
-3. **Start building** with intelligent code generation and assistance
-4. **Deploy with confidence** using the production-ready setup
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+   ```bash
+   cp .env.example .env
+   # Edit .env with your configuration
+   ```
+
+4. **Set up the database**
+   ```bash
+   npm run db:push
+   ```
+
+5. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+
+6. **Open your browser**
+   Navigate to `http://localhost:3000`
+
+### Docker Deployment
+
+1. **Build and run with Docker Compose**
+   ```bash
+   docker-compose up -d
+   ```
+
+2. **For production with Nginx**
+   ```bash
+   docker-compose --profile production up -d
+   ```
+
+3. **For example deployed project**
+   ```bash
+   docker-compose --profile example up -d
+   ```
+
+## 🎯 Usage
+
+### Building Your First Application
+
+1. **Open the Builder**: Navigate to the main page and click "Builder"
+2. **Add Blocks**: Drag blocks from the palette on the left
+3. **Connect Blocks**: Connect block inputs and outputs visually
+4. **Configure Blocks**: Click on blocks to configure their properties
+5. **Test Your App**: Use the preview mode to test functionality
+6. **Deploy**: Click "Deploy" to publish your application
+
+### Using the AI Assistant
+
+1. **Click "AI Assistant"** in the top toolbar
+2. **Describe what you want to build** in natural language
+3. **Review Suggestions**: The AI will suggest blocks and connections
+4. **Apply Suggestions**: Add the suggested blocks to your canvas
+
+### Example: Chatbot Workflow
+
+The demo includes a pre-built chatbot that:
+- Accepts user input through a UI block
+- Processes messages with an AI chat block
+- Saves conversations to the database
+- Displays responses in real-time
+
+## 💰 Subscription Tiers
+
+| Feature | Free | Pro ($15/mo) | Business ($49/mo) | Enterprise |
+|---------|------|--------------|-------------------|------------|
+| Projects | Unlimited | Unlimited | Unlimited | Unlimited |
+| Deployments | 0 | 5 shared | 20 dedicated | Unlimited |
+| AI Requests | 10/day | 1,000/month | 10,000/month | Unlimited |
+| Custom Domains | ❌ | ❌ | ✅ | ✅ |
+| Dedicated Container | ❌ | ❌ | ✅ | ✅ |
+| Priority Support | ❌ | ✅ | ✅ | ✅ |
+| SLA Guarantee | ❌ | ❌ | ❌ | ✅ |
+
+## 🔧 Configuration
+
+### Environment Variables
+
+```env
+# Database
+DATABASE_URL="file:./dev.db"
+
+# Next.js
+NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_SECRET="your-secret-key"
+
+# AI Configuration
+ZAI_API_KEY="your-z-ai-api-key"
+
+# Deployment
+NODE_ENV="development"
+PORT=3000
+```
+
+### Database Schema
+
+The application uses the following main models:
+- **User**: User accounts and subscriptions
+- **Project**: Builder projects with configurations
+- **Workflow**: Visual workflow definitions
+- **Deployment**: Container deployment information
+- **Billing**: Subscription and usage tracking
+- **Conversation**: AI chat history
+
+## 🔌 API Endpoints
+
+### Projects
+- `GET /api/projects` - List user projects
+- `POST /api/projects` - Create new project
+- `GET /api/projects/[id]` - Get project details
+- `PUT /api/projects/[id]` - Update project
+- `DELETE /api/projects/[id]` - Delete project
+
+### AI
+- `POST /api/ai/generate` - Generate AI suggestions
+- `POST /api/chat` - Send chat message
+
+### Users
+- `POST /api/users` - Create user
+- `GET /api/users` - Get user info
+
+### Subscriptions
+- `GET /api/subscriptions` - List subscription tiers
+- `POST /api/subscriptions` - Update subscription
+
+### Deployments
+- `POST /api/deployments` - Create deployment
+- `GET /api/deployments` - List deployments
+
+## 🧩 Block System
+
+### UI Blocks
+- **Button**: Clickable button element
+- **Text Input**: User input field
+- **Text**: Display text content
+
+### Logic Blocks
+- **Condition**: Conditional branching
+- **Delay**: Time-based delays
+
+### AI Blocks
+- **AI Chat**: Conversational AI
+- **AI Generate**: Content generation
+
+### API Blocks
+- **API Request**: HTTP requests
+- **Webhook**: Receive webhooks
+
+## 🚀 Deployment
+
+### Manual Deployment
+
+1. **Build the application**
+   ```bash
+   npm run build
+   ```
+
+2. **Start the production server**
+   ```bash
+   npm start
+   ```
+
+### Docker Deployment
+
+1. **Build the Docker image**
+   ```bash
+   docker build -t zero-code-builder .
+   ```
+
+2. **Run the container**
+   ```bash
+   docker run -d -p 3000:3000 zero-code-builder
+   ```
+
+### Production Deployment
+
+For production deployment with Nginx and SSL:
+
+1. **Set up environment variables**
+2. **Configure SSL certificates**
+3. **Run with Docker Compose**
+   ```bash
+   docker-compose --profile production up -d
+   ```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🆘 Support
+
+- **Documentation**: Check this README and inline code comments
+- **Issues**: Report bugs and feature requests on GitHub
+- **Community**: Join our Discord community
+- **Email**: support@zerocodebuilder.com
+
+## 🔮 Roadmap
+
+### Phase 1 (Current)
+- ✅ Visual builder interface
+- ✅ AI assistant integration
+- ✅ Basic deployment system
+- ✅ Subscription management
+
+### Phase 2 (Next)
+- 🔄 Custom block creation
+- 🔄 Advanced workflow features
+- 🔄 Team collaboration
+- 🔄 Version control
+
+### Phase 3 (Future)
+- 📋 Mobile app builder
+- 📋 Advanced analytics
+- 📋 Plugin ecosystem
+- 📋 Enterprise features
 
 ---
 
-Built with ❤️ for the developer community. Supercharged by [Z.ai](https://chat.z.ai) 🚀
+Built with ❤️ using Next.js, React Flow, and z-ai-web-dev-sdk

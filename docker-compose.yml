@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  # Main Zero-Code Builder Application
+  builder:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=file:./dev.db
+    volumes:
+      - ./db:/app/db
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  # Database
+  db:
+    image: sqlite:latest
+    volumes:
+      - ./db:/data
+    restart: unless-stopped
+
+  # Nginx Reverse Proxy (for production deployments)
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/nginx/ssl
+    depends_on:
+      - builder
+    restart: unless-stopped
+    profiles:
+      - production
+
+  # Redis for caching (optional)
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    profiles:
+      - production
+
+  # Example deployed project container
+  deployed-project:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+      - PROJECT_ID=example-project
+      - DEPLOYMENT_ID=example-deployment
+    ports:
+      - "3001:3000"
+    restart: unless-stopped
+    profiles:
+      - example
